@@ -1,17 +1,17 @@
 import reportWebVitals from './reportWebVitals';
-import state, { subscribe } from './redux/state';
+import store from './redux/state';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { addPost, updateNewPostText } from './redux/state';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let rerenderEntireTree = (state) => {
     root.render(
         <BrowserRouter>
-            <App state = { state } addPost = { addPost } updateNewPostText={updateNewPostText}/>
+            <App state = {state } addPost = { store.addPost.bind(store) } updateNewPostText={store.updateNewPostText.bind(store)}/>
         </BrowserRouter>
     );
 };
@@ -21,5 +21,5 @@ let rerenderEntireTree = (state) => {
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-rerenderEntireTree(state)
-subscribe(rerenderEntireTree)
+rerenderEntireTree(store.getState())
+store.subscribe(rerenderEntireTree)
