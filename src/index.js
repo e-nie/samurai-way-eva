@@ -6,12 +6,11 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let rerenderEntireTree = (state) => {
     root.render(
         <BrowserRouter>
-            <App state = {state } addPost = { store.addPost.bind(store) } updateNewPostText={store.updateNewPostText.bind(store)}/>
+            <App state = { state } dispatch = { store.dispatch.bind(store) } />
         </BrowserRouter>
     );
 };
@@ -21,5 +20,5 @@ let rerenderEntireTree = (state) => {
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-rerenderEntireTree(store.getState())
-store.subscribe(rerenderEntireTree)
+rerenderEntireTree(store.getState());
+store.subscribe(rerenderEntireTree);
