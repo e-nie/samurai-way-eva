@@ -10,10 +10,15 @@
 .dialogsItems {
     padding: 10px;
     color: white;
+
 }
 
 .messages {
     padding: 10px;
+    font-size: 26px;
+   line-height: normal;
+  font-family: Roboto, SansSerif;
+    color: #333333;
 }
 
 .messages .message {
